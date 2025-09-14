@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weatherly.API", "Weatherly.API\Weatherly.API.csproj", "{78AED0A4-A7B6-4861-B8D6-50C14EC2254E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weatherly.API", "Weatherly.API\Weatherly.API.csproj", "{78AED0A4-A7B6-4861-B8D6-50C14EC2254E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
