@@ -47,3 +47,15 @@
   font-size: 1.1rem;
   font-weight: 500;
 }
+
+@media (max-width: 768px) {
+  .weather-card {
+    width: 45%;
+  }
+}
+
+@media (max-width: 480px) {
+  .weather-card {
+    width: 90%;
+  }
+}
