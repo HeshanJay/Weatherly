@@ -1,4 +1,5 @@
-﻿using WeatherApp.API.Services;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using WeatherApp.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,13 +11,12 @@ builder.Services.AddSwaggerGen();
 // Register HttpClient for WeatherService
 builder.Services.AddHttpClient<WeatherService>();
 
-// Make configuration available
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 
 // Add memory cache
 builder.Services.AddMemoryCache();
 
-// ✅ Add CORS policy BEFORE builder.Build()
+// Add CORS policy
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
@@ -27,9 +27,23 @@ builder.Services.AddCors(options =>
     });
 });
 
+// Auth o
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.Authority = $"https://{builder.Configuration["Auth0:Domain"]}/";
+    options.Audience = builder.Configuration["Auth0:Audience"];
+});
+
+
+builder.Services.AddAuthorization();
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -39,6 +53,7 @@ if (app.Environment.IsDevelopment())
 app.UseCors("AllowFrontend");
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 

@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WeatherApp.API.Services;
 
 namespace WeatherApp.API.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
+    [ApiController]
     public class WeatherController : ControllerBase
     {
         private readonly WeatherService _weatherService;
@@ -17,6 +18,7 @@ namespace WeatherApp.API.Controllers
         }
 
         [HttpGet("{cityId:int}")]
+        [Authorize]
         public async Task<IActionResult> GetWeather(int cityId)
         {
             var data = await _weatherService.GetWeatherByCityCodeAsync(cityId);
@@ -24,6 +26,7 @@ namespace WeatherApp.API.Controllers
         }
 
         [HttpGet("all")]
+        [Authorize]
         public async Task<IActionResult> GetAllWeather()
         {
             var jsonPath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "cities.json");
