@@ -26,14 +26,14 @@ git clone https://github.com/HeshanJay/Weatherly.git
 
 
 ### Backend Setup (ASP.NET Core API)
-cd Weatherly.API
-dotnet restore
-dotnet run
+- cd Weatherly.API
+- dotnet restore
+- dotnet run
 
 ### Frontend Setup (React + Vite)
-cd Weatherly.WEB
-npm install
-npm run dev
+- cd Weatherly.WEB
+- npm install
+- npm run dev
 
 
 
