@@ -1,0 +1,49 @@
+.weather-card {
+  border-radius: 12px;
+  padding: 20px;
+  margin: 12px;
+  width: 220px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: #fff; /* default: white text */
+}
+
+.weather-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Backgrounds for weather types */
+.weather-card.sunny {
+  background: linear-gradient(135deg, #f9d423, #ff4e50);
+}
+.weather-card.cloudy {
+  background: linear-gradient(135deg, #bdc3c7, #2c3e50);
+}
+.weather-card.rain {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+}
+.weather-card.drizzle {
+  background: linear-gradient(135deg, #74ebd5, #acb6e5);
+}
+.weather-card.snow {
+  background: linear-gradient(135deg, #83a4d4, #b6fbff);
+}
+
+.weather-icon {
+  font-size: 3.5rem;
+  margin-bottom: 8px;
+}
+
+.temperature {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #fff;
+}
+
+.status {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
